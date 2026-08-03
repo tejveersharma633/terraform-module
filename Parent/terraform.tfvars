@@ -3,6 +3,10 @@ rg_name = {
     name     = "rg-dev"
     location = "centralindia"
   }
+    rg2 = {
+    name     = "rg-qa"
+    location = "centralindia"
+  }
 }
 
 
