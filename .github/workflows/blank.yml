@@ -1,0 +1,20 @@
+name: Create Azure Resource Group
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create-rg:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Create Resource Group
+        run: |
+          az group create \
+            --name rg-github-test \
+            --location centralindia
