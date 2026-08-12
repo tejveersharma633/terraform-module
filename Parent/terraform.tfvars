@@ -3,11 +3,11 @@ rg_name = {
     name     = "rg-dev"
     location = "centralindia"
   }
-    rg2 = {
+  rg2 = {
     name     = "rg-qa"
     location = "centralindia"
   }
-      rg3 = {
+  rg3 = {
     name     = "rg-uat"
     location = "centralindia"
   }
@@ -71,9 +71,9 @@ subnet = {
     virtualnet = "virtualnetworkdemo2"
     aspace     = ["10.1.143.0/24"]
   }
-  bastionsubnet1 = {
-    name                 = "AzureBastionSubnet"
-    rg  = "rg-dev"
+  bastionsubnet = {
+    name       = "AzureBastionSubnet"
+    rg         = "rg-dev"
     virtualnet = "virtualnetworkdemo1"
     aspace     = ["10.0.143.0/26"]
   }
@@ -130,80 +130,83 @@ nics = {
     vnet_name           = "virtualnetworkdemo1"
     resource_group_name = "rg-dev"
     pipip               = "vmpip1"
-    datasubnetname      = "subnetdemo1"
-  }
-
-  # nic2 = {
-  #   name                 = "vnic2"
-  #   location             = "centralindia"
-  #   resource_group_name  = "rg-dev"
-  #   datasubnetname      = "data-subnet"
-  #   pipip= "vmpip2"
-  #   subnet_id            = "subnetdemo2"
-  #  }
-
-  nic3 = {
-    name                = "vnic3"
-    location            = "centralindia"
-    vnet_name           = "virtualnetworkdemo2"
-    resource_group_name = "rg-dev"
-    datasubnetname      = "subnetdemo2"
-    pipip               = "vmpip2"
+    datasubnetname            = "subnetdemo1"
   }
 }
 
+# nic2 = {
+#   name                 = "vnic2"
+#   location             = "centralindia"
+#   resource_group_name  = "rg-dev"
+#   datasubnetname      = "data-subnet"
+#   pipip= "vmpip2"
+#   subnet_id            = "subnetdemo2"
+#  }
+
+#   nic3 = {
+#     name                = "vnic3"
+#     location            = "centralindia"
+#     vnet_name           = "virtualnetworkdemo2"
+#     resource_group_name = "rg-dev"
+#     datasubnetname      = "subnetdemo2"
+#     pipip               = "vmpip2"
+#   }
+# }
+
 vmdemo = {
   vm1 = {
-    name                = "Virtual-machine1"
-    resource_group_name = "rg-dev"
-    datavm              = "vnic1"
-    keyvaltname         = "kv-dev-tej2"
-    location            = "centralindia"
-        username_secret_name = "vm-admin-username"
-    password_secret_name = "vm-admin-password"
-    # admin_username = "azureuser"
-    # admin_password = "P@$$w0rd1234!"
-    publisher      = "Canonical"
-    offer          = "0001-com-ubuntu-server-jammy"
-    sku            = "22_04-lts-gen2"
-    version        = "latest"
-  }
-  # vm2 = {
-  #   name                  = "Virtual-machine2"
-  #   resource_group_name   = "rg-dev"
-  #   location              = "centralindia"
-  #   network_interface_ids = ["/subscriptions/5370b509-fed5-401b-a28f-6a8aa7263ccd/resourceGroups/rg-dev/providers/Microsoft.Network/networkInterfaces/vnic2"]
-  #   # admin_username        = "azureuser"
-  #   # admin_password        = "P@$$w0rd1234!"
-  #   publisher             = "Canonical"
-  #   offer                 = "0001-com-ubuntu-server-jammy"
-  #   sku                   = "22_04-lts-gen2"
-  #   version               = "latest"
-  # }
-  vm3 = {
-    name                = "Virtual-machine3"
-    resource_group_name = "rg-dev"
-    keyvaltname         = "kv-dev-tej2"
-    datavm              = "vnic3"
-    location            = "centralindia"
+    name                 = "Virtual-machine1"
+    resource_group_name  = "rg-dev"
+    datavm               = "vnic1"
+    keyvaltname          = "kv-dev-tej2"
+    location             = "centralindia"
     username_secret_name = "vm-admin-username"
     password_secret_name = "vm-admin-password"
     # admin_username = "azureuser"
     # admin_password = "P@$$w0rd1234!"
-    publisher      = "Canonical"
-    offer          = "0001-com-ubuntu-server-jammy"
-    sku            = "22_04-lts-gen2"
-    version        = "latest"
+    publisher = "Canonical"
+    offer     = "0001-com-ubuntu-server-jammy"
+    sku       = "22_04-lts-gen2"
+    version   = "latest"
   }
 }
+# vm2 = {
+#   name                  = "Virtual-machine2"
+#   resource_group_name   = "rg-dev"
+#   location              = "centralindia"
+#   network_interface_ids = ["/subscriptions/5370b509-fed5-401b-a28f-6a8aa7263ccd/resourceGroups/rg-dev/providers/Microsoft.Network/networkInterfaces/vnic2"]
+#   # admin_username        = "azureuser"
+#   # admin_password        = "P@$$w0rd1234!"
+#   publisher             = "Canonical"
+#   offer                 = "0001-com-ubuntu-server-jammy"
+#   sku                   = "22_04-lts-gen2"
+#   version               = "latest"
+# }
+#   vm3 = {
+#     name                 = "Virtual-machine3"
+#     resource_group_name  = "rg-dev"
+#     keyvaltname          = "kv-dev-tej2"
+#     datavm               = "vnic3"
+#     location             = "centralindia"
+#     username_secret_name = "vm-admin-username"
+#     password_secret_name = "vm-admin-password"
+#     # admin_username = "azureuser"
+#     # admin_password = "P@$$w0rd1234!"
+#     publisher = "Canonical"
+#     offer     = "0001-com-ubuntu-server-jammy"
+#     sku       = "22_04-lts-gen2"
+#     version   = "latest"
+#   }
+# }
 
 bastion = {
   bastionpublic = {
     name                 = "pubbastion"
     location             = "centralindia"
+    datasubnetname       = "AzureBastionSubnet"
     resource_group_name  = "rg-dev"
-    virtual_network_name = "vnetdemo1"
-    public_ip_address_id = "/subscriptions/5370b509-fed5-401b-a28f-6a8aa7263ccd/resourceGroups/rg-dev/providers/Microsoft.Network/publicIPAddresses/bastiopip"
+    virtual_network_name = "virtualnetworkdemo1"
+    pipip                = "vmpip2"
   }
 }
 

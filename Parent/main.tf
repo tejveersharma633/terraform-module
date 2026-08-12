@@ -41,7 +41,7 @@ module "kvault" {
 
 
 module "vmdemo" {
-  depends_on = [module.nics, module.resource_group, module.subnet, module.publicip,module.kvault]
+  depends_on = [module.nics, module.resource_group, module.subnet, module.publicip, module.kvault]
   source     = "../module/azurerm_linux_virtual_machine"
   vmdemo     = var.vmdemo
 }
@@ -49,9 +49,9 @@ module "vmdemo" {
 
 
 module "bastion" {
-depends_on = [module.resource_group]
-  source = "../module/azurerm_bastion_host"
-  bastion  = var.bastion
+  depends_on = [module.resource_group, module.subnet,module.publicip]
+  source     = "../module/azurerm_bastion_host"
+  bastion    = var.bastion
 }
 
 

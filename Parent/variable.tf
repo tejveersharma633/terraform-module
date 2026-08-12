@@ -7,6 +7,5 @@ variable "publicip" {}
 variable "nics" {}
 variable "vmdemo" {}
 variable "bastion" {}
-variable "bastionsubnet" {}
 variable "vnetpeer" {}
 variable "keyvault" {}
